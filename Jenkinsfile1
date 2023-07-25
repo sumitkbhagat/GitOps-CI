@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Git CheckOut') {
             steps {
-                git branch: 'main', url: 'https://github.com/jaiswaladi246/GitOps-CI.git'
+                git branch: 'main', url: 'https://github.com/sumitkbhagat/GitOps-CI.git'
             }
         }
         stage('Maven Build') {
