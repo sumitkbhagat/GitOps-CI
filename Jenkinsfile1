@@ -27,7 +27,7 @@ stage('OWASP Dependency Check') {
  stage('Docker Build & Push') {
             steps {
                 script{
-                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                    withDockerRegistry(credentialsId: 'docker-creds', toolName: 'docker') {
                         
                         sh "docker build -t shopping-cart -f docker/Dockerfile1 ."
                         sh "docker tag  shopping-cart sumitkumarbhagat/shopping-cart:latest"
