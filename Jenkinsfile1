@@ -16,6 +16,20 @@ pipeline {
                 sh 'mvn clean package -DskipTests=true'
             }
         }
+ stage('Docker Build & Push') {
+            steps {
+                script{
+                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                        
+                        sh "docker build -t shopping-cart -f docker/Dockerfile1 ."
+                        sh "docker tag  shopping-cart sumitkumarbhagat/shopping-cart:latest"
+                        sh "docker push sumitkumarbhagat/shopping-cart:latest"
+                    }
+                }
+            }
+        }
         
     }
 }
+        
+   
