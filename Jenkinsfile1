@@ -24,20 +24,29 @@ stage('OWASP Dependency Check') {
             }
         }
      
- stage('Docker Build & Push') {
-            steps {
-                script{
-                    withDockerRegistry(credentialsId: 'docker-creds', toolName: 'docker') {
-                        
-                        sh "docker build -t shopping-cart -f docker/Dockerfile1 ."
-                        sh "docker tag  shopping-cart sumitkumarbhagat/shopping-cart:latest"
-                        sh "docker push sumitkumarbhagat/shopping-cart:latest"
-                    }
-                }
-            }
-        }
-        
-    }
+ stage('Docker Build') {
+  steps {
+   script{
+      withDockerRegistry(credentialsId: '595ba1f4-b58f-4c70-a832-18e3065835e8') {
+      sh "docker build -t GitOps-CI:latest -f Dockerfile . "
+     sh "docker tag  GitOps-CI:latest sumitkumarbhagat/ GitOps-CI:latest "
+
+                 }
+           }
+     }
+
+}
+
+  stage('Docker Push') {
+    steps {
+    script{
+      withDockerRegistry(credentialsId: '595ba1f4-b58f-4c70-a832-18e3065835e8') {
+      sh "docker push sumitkumarbhagat/ GitOps-CI "
+                  }
+             }
+         }
+     }
+  }
 }
         
    
