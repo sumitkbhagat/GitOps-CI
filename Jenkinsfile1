@@ -42,7 +42,7 @@ pipeline {
   stage('Docker Push') {
     steps {
     script{
-      withDockerRegistry(credentialsId: '') {
+      withDockerRegistry(credentialsId: 'docker-hub' {
         sh "docker push sumitkumarbhagat/shopping-cart:latest"
                   }
              }
