@@ -26,8 +26,7 @@
 
   stage('Trivy Scan') {
             steps {
-
-                        sh "trivy fs --security-check vuln,config /var/lib/jenkins/workspace/GitOps-CI"
+                sh " trivy fs --security-checks vuln,config /var/lib/jenkins/workspace/GitOps-CI "
                
             }
         }
