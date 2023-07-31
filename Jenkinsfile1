@@ -42,8 +42,7 @@ stage('Docker & Push') {
             steps {
                 script{
                     withDockerRegistry(credentialsId: 'docker-hub', toolName: 'docker') {
-                        
-                      sh "docker push sumitkumarbhagat/shopping-cart:latest"
+                     sh "docker push sumitkumarbhagat/shopping-cart:latest"
 
                     }
                 }
