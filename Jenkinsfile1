@@ -24,6 +24,14 @@
             }
         }
 
+  stage('Trivy Scan') {
+            steps {
+
+                        sh "trivy fs --security-check vuln,config /var/lib/jenkins/workspace/GitOps-CI"
+               
+            }
+        }
+
 
         stage('Docker Build ') {
             steps {
