@@ -23,31 +23,6 @@ stage('OWASP Dependency Check') {
                     dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
-     
- stage('Docker Build & Tag') {
-  steps {
-   script{
-      withDockerRegistry(credentialsId: '595ba1f4-b58f-4c70-a832-18e3065835e8') {
- 
-
-                       sh "docker build -t shopping-cart -f docker/Dockerfile ."
-                        sh "docker tag  shopping-cart sumitkumarbhagat/shopping-cart:latest"
-
-                 }
-           }
-     }
-
+   }
 }
-
-  stage('Docker Push') {
-    steps {
-    script{
-      withDockerRegistry(credentialsId: '595ba1f4-b58f-4c70-a832-18e3065835e8') {
-        sh "docker push sumitkumarbhagat/shopping-cart:latest"
-                  }
-             }
-         }
-     }
-
-
-   
+     
