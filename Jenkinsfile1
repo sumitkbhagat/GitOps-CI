@@ -55,6 +55,10 @@ stage('Docker & Push') {
                 }
             }
         }
+ stage("kubernetes deployment"){
+        sh 'kubectl apply -f deploymentservice.yml '
+    }
+}
         
     }
 }
